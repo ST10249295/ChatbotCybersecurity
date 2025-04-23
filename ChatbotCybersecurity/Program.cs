@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ChatbotCybersecurity;
+using System;
+using System.IO;
 using System.Media;
-using ChatbotCybersecurity;
-using ChatBotCybersecurity;
 
 namespace ChatBotCybersecurity
 {
@@ -47,9 +43,10 @@ namespace ChatBotCybersecurity
         // Method to play greeting sound
         private static void PlayVoiceGreeting()
         {
+           
             try
             {
-                SoundPlayer player = new SoundPlayer("Assets/greeting.wav");
+                SoundPlayer player = new SoundPlayer("Assets/greeting_new.wav");
                 player.PlaySync(); // Play the greeting synchronously
             }
             catch (Exception ex)
