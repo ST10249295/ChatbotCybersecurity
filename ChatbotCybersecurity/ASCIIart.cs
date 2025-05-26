@@ -24,14 +24,15 @@ namespace ChatbotCybersecurity
             string[] artLines = new string[]
             {
                 "[ C L I C K ░ S H I E L D ]",
-                "║█░░░░░░░░░░░░░░░░░░░░░█║",
-                "║█░  (•‿•)              ░█║   < Hello, I'm ClickShield!",
+                "║█░░░░░░░░░░░░░░░░░░░░░░░█║",
+                "║█░       (•‿•)         ░█║    < Heyyy, I'm ClickShield!",
                 "║█░  Your cyber buddy   ░█║",
                 "║█░  and digital shield.░█║",
-                "║█░░░░░░░░░░░░░░░░░░░░░█║",
+                "║█░░░░░░░░░░░░░░░░░░░░░░░█║",
                 "         /__\\",
                 "       [_____]  "
             };
+            
 
             foreach (string line in artLines)
             {

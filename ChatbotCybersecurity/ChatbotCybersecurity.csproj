@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include=".github\workflows\dotnet.txt" />
+    <None Include=".github\workflows\dotnet.yml" />
     <Content Include="Assets\greeting_new.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

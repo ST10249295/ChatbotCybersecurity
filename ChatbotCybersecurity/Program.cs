@@ -8,51 +8,62 @@ namespace ChatBotCybersecurity
     class Program
     {
         static void Main(string[] args)
-
-        {   //Allows charcters and emojis
+        {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            // Plays the voice greeting
             PlayVoiceGreeting();
-
-            // Shows ASCII Art 
             ASCIIArt.DisplayShield();
-
-            // Start the chatbot interaction
             ChatBot.GreetUser();
 
-            // Simple Q&A loop
-            bool running = true;
-            while (running)
-            {
-                Console.WriteLine("\nAsk me something about cybersecurity:");
-                string userInput = Console.ReadLine().ToLower();
+            Console.WriteLine("\nType your cybersecurity questions below, or type 'bye'when you want to end the chat.");
 
-                if (userInput == "bye")
+            while (true)
+            {
+                Console.Write("\n🗣️ You: ");
+                string input = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(input))
                 {
-                    running = false;
-                    Console.WriteLine("Goodbye! It was great chatting to you, Stay safe online. 👋");
+                    Console.WriteLine("⚠️ Please type something so I can respond.");
+                    continue;
+                }
+
+                if (input.ToLower().Contains("bye") || input.ToLower().Contains("exit") || input.ToLower().Contains("quit"))
+                {
+                    ChatBot.RespondToInput("bye"); // Chat bot decides the exit 
+                    break;
+                }
+
+                ChatBot.RespondToInput(input);
+            }
+
+            Console.WriteLine("\n👋 Press any key to exit...");
+            Console.ReadKey();
+        }
+
+        static void PlayVoiceGreeting()
+        {
+            try
+            {
+                string path = Path.Combine("Assets", "greeting_new.wav");
+                if (File.Exists(path))
+                {
+                    using (SoundPlayer player = new SoundPlayer(path))
+                    {
+                        player.PlaySync();
+                    }
                 }
                 else
                 {
-                    ChatBot.RespondToBasicQuestions(userInput);
+                    Console.WriteLine("🔊 Voice greeting not found. Continuing without audio...");
                 }
-            }
-        }
-
-        // Method to play greeting sound
-        private static void PlayVoiceGreeting()
-        {
-           
-            try
-            {
-                SoundPlayer player = new SoundPlayer("Assets/greeting_new.wav");
-                player.PlaySync(); // Play the greeting synchronously
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error playing greeting sound: " + ex.Message);
+                Console.WriteLine($"⚠️ Failed to play greeting: {ex.Message}");
             }
         }
+
+       
     }
 }
